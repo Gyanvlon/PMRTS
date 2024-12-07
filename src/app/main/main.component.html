@@ -1,0 +1,72 @@
+   
+   <mat-toolbar color="primary" class="mat-elevation-z5">
+     <button mat-icon-button (click)="collapsed.set(!collapsed())" >
+            <mat-icon class="menu-icon">menu</mat-icon>
+          </button>
+          <img src="MRTS.png" alt="Personal Medical Records Tracking System" class="logo" height="35px" width="35px">
+          <span class="title">Personal Medical Record Tracking System</span>
+          <span class="spacer"></span>
+          <button mat-icon-button>
+            <mat-icon class="menu-icon">notifications</mat-icon>
+          </button>
+          <button mat-icon-button [matMenuTriggerFor]="userMenu">
+            <mat-icon class="menu-icon">account_circle</mat-icon>
+          </button>
+          <mat-menu #userMenu="matMenu">
+            <button mat-menu-item>Profile</button>
+            <button mat-menu-item>Settings</button>
+            <button mat-menu-item (click)="logout()" >Logout</button>
+          </mat-menu>
+   </mat-toolbar>
+   <mat-sidenav-container>
+     <mat-sidenav #sidenav mode="side" opened [style.width]="collapsed() ? '50px' : '230px'">
+      <mat-nav-list>
+        <a mat-list-item [routerLink]="['/home/dashboard']" >
+          <mat-icon matListItemIcon>home</mat-icon>
+          <span matListItemTitle>Home</span>
+        </a>
+        <a mat-list-item [routerLink]="['/home/hospitals']" >
+          <mat-icon matListItemIcon>local_hospital</mat-icon>
+          <span matListItemTitle>Hospitals</span>
+        </a>
+        <a mat-list-item [routerLink]="['/home/pharmacies']">
+          <mat-icon matListItemIcon>local_pharmacy</mat-icon>
+          <span matListItemTitle>Pharmacy</span>
+        </a>
+        <a mat-list-item [routerLink]="['/home/labs']">
+          <mat-icon matListItemIcon>science</mat-icon>
+          <span matListItemTitle>Lab</span>
+        </a>
+        <a mat-list-item [routerLink]="['/home/doctors']">
+          <mat-icon matListItemIcon>medical_services</mat-icon>
+          <span matListItemTitle>Doctor</span>
+        </a>
+        <a mat-list-item [routerLink]="['/home/pharmacists']">
+          <mat-icon matListItemIcon>healing</mat-icon>
+          <span matListItemTitle>Pharmacist</span>
+        </a>
+        <a mat-list-item [routerLink]="['/home/patients']">
+          <mat-icon matListItemIcon>person</mat-icon>
+          <span matListItemTitle>Patient</span>
+        </a>
+        <a mat-list-item [routerLink]="['/home/labtechnicians']">
+          <mat-icon matListItemIcon>engineering</mat-icon>
+          <span matListItemTitle>Lab Technician</span>
+        </a>
+        <a mat-list-item [routerLink]="['/home/reports']">
+          <mat-icon matListItemIcon>report</mat-icon>
+          <span matListItemTitle>Medical Report</span>
+        </a>
+        <a mat-list-item [routerLink]="['/home/prescriptions']">
+          <mat-icon matListItemIcon>description</mat-icon>
+          <span matListItemTitle>Prescriptions</span>
+        </a>
+      </mat-nav-list>
+      
+     </mat-sidenav>
+     <mat-sidenav-content class="content" [style.margin-left]="collapsed() ? '50px' : '230px'">
+      <router-outlet></router-outlet>
+     </mat-sidenav-content>
+   </mat-sidenav-container>
+   
+  

@@ -1,0 +1,17 @@
+.hospital-search-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px; /* Adjust spacing between elements */
+  }
+  
+  .search-field {
+    flex: 1; /* Makes the search input take up remaining space */
+    max-width: 600px;
+    height: 50px; /* Optional: Limit the maximum width of the search input */
+  }
+  
+  .add-hospital-button {
+    white-space: nowrap; /* Prevents text from wrapping in the button */
+  }
+  

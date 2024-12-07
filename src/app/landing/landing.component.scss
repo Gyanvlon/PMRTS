@@ -1,0 +1,113 @@
+.app-container {
+    font-family: 'Roboto', sans-serif;
+  }
+  mat-icon {
+    height: 50px !important;
+    width: 100px !important;
+    margin-bottom: 8px;
+    margin-left: 120px;
+  }
+  /* Navigation Bar */
+  .nav-bar {
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    padding: 0 16px;
+  }
+  
+  .spacer {
+    flex: 1;
+  }
+  
+  .logo {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: white;
+  }
+  
+  .login-button {
+    margin-right: 8px;
+  }
+  
+  .hero-section {
+    background: linear-gradient(to right, #358ed7, #1e88e5);
+    color: white;
+    text-align: center;
+    padding: 60px 20px;
+  }
+  
+  .hero-content h1 {
+    font-size: 3.2rem;
+    margin-bottom: 10px;
+    font-weight: bold;
+  }
+  
+  .hero-content p {
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+  }
+  
+  .cta-buttons button {
+    margin: 0 10px;
+  }
+  
+  .features-section {
+    padding: 40px 20px;
+    text-align: center;
+  }
+  
+  .features-section h2 {
+    font-size: 2rem;
+    margin-bottom: 30px;
+  }
+  
+  .features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  .feature-card {
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .feature-icon {
+    font-size: 50px;
+    margin-bottom: 10px;
+  }
+  
+  /* Footer */
+  .footer {
+    background: #f8f9fa;
+    color: #6c757d;
+    text-align: center;
+    padding: 10px 20px;
+    border-top: 1px solid #ddd;
+  }
+  
+  .footer-content a {
+    color: #1e88e5;
+    text-decoration: none;
+    margin: 0 5px;
+  }
+  
+  .footer-content a:hover {
+    text-decoration: underline;
+  }
+  button{
+    background-color: #dde5ed;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+//   .hero-section {
+//     background-image: url('public/img.jpg'); 
+//     background-size: cover;
+//     background-position: center; 
+//     padding: 50px;
+//   }

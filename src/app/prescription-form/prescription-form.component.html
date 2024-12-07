@@ -1,0 +1,93 @@
+ <div class="container"> 
+    <mat-card class="form-card" appearance="outlined">
+      <mat-card-header>
+        <mat-card-title>  
+          <h2>{{title}}</h2>
+        </mat-card-title>
+    
+      </mat-card-header>
+      <mat-card-content>
+            <form [formGroup]="firstFormGroup">
+              <ng-template matStepLabel>Fill Out Details</ng-template>
+              <div class="row">
+                <mat-form-field appearance="outline" class="full-width">
+                    <mat-label>Diagnosis Code</mat-label>
+                    <input matInput placeholder="Enter Diagnosis Code" formControlName="diagnosisCode" required>
+                  </mat-form-field>
+              <mat-form-field appearance="outline" class="full-width">
+                <mat-label>Drug Name </mat-label>
+                <input matInput placeholder="Enter Name" formControlName="drugName" required>
+              </mat-form-field>
+              <mat-form-field appearance="outline" class="full-width">
+                <mat-label>Dosage</mat-label>
+                <input matInput placeholder="Enter Dosage" formControlName="dosage" required>
+              </mat-form-field>
+              </div>
+              <div class="row">
+                <mat-form-field appearance="outline" class="full-width">
+                    <mat-label>Start Date</mat-label>
+                    <input matInput [matDatepicker]="picker" formControlName="startDate" required>
+                    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                    <mat-datepicker #picker></mat-datepicker>
+                  </mat-form-field>
+                <mat-form-field appearance="outline" class="full-width">
+                  <mat-label> End Date</mat-label>
+                  <input matInput [matDatepicker]="picker1" formControlName="endDate" required>
+                  <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+                  <mat-datepicker #picker1></mat-datepicker>
+                </mat-form-field>
+              </div>
+              <div class="row">
+                <mat-form-field appearance="outline" class="full-width">
+                    <mat-label>Frequency</mat-label>
+                    <input matInput placeholder="Enter Frequency" formControlName="frequency" required>
+                  </mat-form-field>
+                  <mat-form-field appearance="outline" class="full-width">
+                    <mat-label>Duration</mat-label>
+                    <input matInput placeholder="Enter Duration" formControlName="duration" required>
+                  </mat-form-field>
+                </div>
+                <div class="row">
+                    <mat-form-field appearance="outline" class="full-width">
+                        <mat-label>Status</mat-label>
+                        <input matInput placeholder="Enter Status" formControlName="status" required>
+                      </mat-form-field>
+                      <mat-form-field appearance="outline" class="full-width">
+                        <mat-label>Notes</mat-label>
+                        <input matInput placeholder="Enter Status" formControlName="notes" required>
+                      </mat-form-field>
+                </div>
+                <div class="row">
+                  <mat-form-field appearance="outline" >
+                    <mat-label>Renewable</mat-label>
+                    <mat-select [(value)]="selecteRenewable" formControlName="renewable" required>
+                      <mat-option value="Yes">Yes</mat-option>
+                      <mat-option value="No">No</mat-option>
+                    </mat-select>
+                    </mat-form-field>
+                  <mat-form-field appearance="outline" >
+                    <mat-label>Select Patient</mat-label>
+                    <mat-select [(value)]="selectedPatient" formControlName="patientId" required>
+                      @for (item of listOfPatients; track item.patientId) {
+                        <mat-option [value]="item.patientId"> {{item.patientName}} </mat-option>
+                      }
+                    </mat-select>
+                  </mat-form-field>
+                  <mat-form-field appearance="outline" >
+                    <mat-label>Select Pharmacist </mat-label>
+                    <mat-select [(value)]="selectedPharmacist" formControlName="pharmacistId" required>
+                      @for (item of listOfPharmacists; track item.pharmacistId) {
+                        <mat-option [value]="item.pharmacistId"> {{item.pharmacistName}} </mat-option>
+                      }
+                    </mat-select>
+                  </mat-form-field>
+                </div>
+                @if(isUpdate){
+                <button mat-raised-button color="primary" color="primary" (click)="update()">Update</button>
+                }@else {
+                    <button mat-raised-button color="primary" color="primary" (click)="submit()">Submit</button>
+                }
+            </form>
+      </mat-card-content>
+    </mat-card>
+  

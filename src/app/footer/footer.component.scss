@@ -1,0 +1,24 @@
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+  }
+  
+  .footer-logo {
+    height: 30px;
+    margin-right: 10px;
+  }
+  
+  .footer-right {
+    display: flex;
+    align-items: center;
+  }
+  
+  .social-icons {
+    margin-left: 20px;
+  }
+  
+  .social-icons a {
+    margin-right: 10px;
+  }

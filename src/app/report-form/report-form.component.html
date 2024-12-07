@@ -1,0 +1,96 @@
+<div class="container"> 
+    <mat-card class="form-card" appearance="outlined">
+      <mat-card-header>
+        <mat-card-title>  
+          <h2>{{title}}</h2>
+        </mat-card-title>
+    
+      </mat-card-header>
+      <mat-card-content>
+            <form [formGroup]="firstFormGroup">
+              <ng-template matStepLabel>Fill Out Details</ng-template>
+              <div class="row">
+              <mat-form-field appearance="outline" class="full-width">
+                <mat-label>Test Name </mat-label>
+                <input matInput placeholder="Enter test name" formControlName="testName" required>
+              </mat-form-field>
+              <mat-form-field appearance="outline" class="full-width">
+                <mat-label>Sample Type</mat-label>
+                <input matInput placeholder="Enter Dosage" formControlName="sampleType" required>
+              </mat-form-field>
+              </div>
+              <div class="row">
+                <mat-form-field appearance="outline" class="full-width">
+                    <mat-label>Test Date</mat-label>
+                    <input matInput [matDatepicker]="picker" formControlName="testDate" required>
+                    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                    <mat-datepicker #picker></mat-datepicker>
+                  </mat-form-field>
+                <mat-form-field appearance="outline" class="full-width">
+                  <mat-label> Report Generated Date</mat-label>
+                  <input matInput [matDatepicker]="picker" formControlName="reportGeneratedDate" required>
+                  <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                  <mat-datepicker #picker></mat-datepicker>
+                </mat-form-field>
+              </div>
+              <div class="row">
+                <mat-form-field appearance="outline" class="full-width">
+                    <mat-label>Test Description</mat-label>
+                    <input matInput placeholder="Enter Test Description" formControlName="testDescription" required>
+                  </mat-form-field>
+                  <mat-form-field appearance="outline" class="full-width">
+                    <mat-label>Test Result</mat-label>
+                    <input matInput placeholder="Enter Test Result" formControlName="testResult" required>
+                  </mat-form-field>
+                </div>
+                <div class="row">
+                    <mat-form-field appearance="outline" class="full-width">
+                        <mat-label>Test Unit</mat-label>
+                        <input matInput placeholder="Enter Test Unit" formControlName="testUnit" required>
+                      </mat-form-field>
+                      <mat-form-field appearance="outline" class="full-width">
+                        <mat-label>Normal Range</mat-label>
+                        <input matInput placeholder="Enter Test Result" formControlName="normalRange" required>
+                      </mat-form-field>
+                    </div>
+                <div class="row">
+                    <mat-form-field appearance="outline" class="full-width">
+                        <mat-label>Test Status</mat-label>
+                        <input matInput placeholder="Enter Status" formControlName="testStatus" required>
+                      </mat-form-field>
+                      <mat-form-field appearance="outline" class="full-width">
+                        <mat-label>Comment</mat-label>
+                        <input matInput placeholder="Enter Status" formControlName="comments" required>
+                      </mat-form-field>
+                </div>
+                <div class="row">
+                  <mat-form-field appearance="outline" >
+                    <mat-label>Select Patient</mat-label>
+                    <mat-select [(value)]="selectedPatient" formControlName="patientId" required>
+                      @for (item of listOfPatients; track item.patientId) {
+                        <mat-option [value]="item.patientId"> {{item.patientName}} </mat-option>
+                      }
+                    </mat-select>
+                  </mat-form-field>
+                  <mat-form-field appearance="outline" >
+                    <mat-label>Select Lab </mat-label>
+                    <mat-select [(value)]="selectedLab" formControlName="labId" required>
+                      @for (item of listOfLabs; track item.labId) {
+                        <mat-option [value]="item.labId"> {{item.labName}} </mat-option>
+                      }
+                    </mat-select>
+                  </mat-form-field>
+                  <mat-form-field appearance="outline" >
+                    <mat-label>Select Lab </mat-label>
+                    <mat-select [(value)]="selectedDoctor" formControlName="doctorId" required>
+                      @for (item of listOfDoctors; track item.doctorId) {
+                        <mat-option [value]="item.doctorId"> {{item.doctorName}} </mat-option>
+                      }
+                    </mat-select>
+                  </mat-form-field>
+                </div>
+                <button mat-raised-button color="primary" color="primary" (click)="submit()">Submit</button>
+            </form>
+      </mat-card-content>
+    </mat-card>
+  

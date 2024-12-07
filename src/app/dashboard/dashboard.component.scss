@@ -1,0 +1,46 @@
+.dashboard-container {
+    display: flex;
+    justify-content: center;
+    padding: 16px;
+  }
+  
+  .dashboard-card {
+    width: 100%;
+    max-width: 1200px;
+  }
+  
+  .stats-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 16px;
+  }
+  
+  .stat-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: column;
+    text-align: center;
+    width: 30%; /* Ensures 3 items per row */
+    padding: 16px;
+    background-color: #e3f2fd;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    text-decoration: none;
+    color: inherit;
+  }
+  
+  mat-icon {
+    height: 40px!important;
+    width: 40px!important;
+    font-size: 40px;
+    color: #1976d2;
+    margin-bottom: 8px;
+  }
+  
+  .stat-item span {
+    font-size: 16px;
+    font-weight: bold;
+  }
+  

@@ -1,0 +1,323 @@
+ <!-- <app-header></app-header> -->
+ <div class="container"> 
+  <mat-card class="form-card" appearance="outlined">
+    <mat-card-header>
+      <mat-card-title>  
+        <h2>{{title}}</h2>
+      </mat-card-title>
+      @if (isUpdate) {
+        <button 
+        mat-raised-button 
+        color="warn" 
+        class="delete-button" 
+        (click)="delete()" >
+        Delete {{title}}
+      </button>
+      }
+    </mat-card-header>
+    <mat-card-content>
+      <mat-stepper #stepper>
+        <!-- First Step -->
+        <mat-step [stepControl]="firstFormGroup">
+          <form [formGroup]="firstFormGroup">
+            <ng-template matStepLabel>Fill Out Details</ng-template>
+            <div class="row">
+            <mat-form-field appearance="outline" class="full-width">
+              <mat-label>Name</mat-label>
+              <input matInput placeholder="Enter Name" formControlName="name" required>
+            </mat-form-field>
+            <mat-form-field appearance="outline" class="full-width">
+              <mat-label>Email</mat-label>
+              <input matInput placeholder="Enter Email" formControlName="email" required>
+            </mat-form-field>
+            </div>
+            @if (role == "PATIENT") {
+            <div class="row">
+              <mat-form-field appearance="outline" class="full-width">
+                <mat-label>Phone Number</mat-label>
+                <input matInput placeholder="Enter Phone Number" formControlName="phoneNumber" type="number" required>
+              </mat-form-field>
+              <mat-form-field appearance="outline" class="full-width">
+                <mat-label> Date of Birth</mat-label>
+                <input matInput [matDatepicker]="picker" formControlName="dob" required>
+                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+              </mat-form-field>
+            </div>
+            <div class="row">
+              <mat-form-field appearance="outline" >
+                <mat-label>Select Gender</mat-label>
+                <mat-select [(value)]="selected" formControlName="gender" required>
+                  <mat-option value="male">Male</mat-option>
+                  <mat-option value="female">Female</mat-option>
+                  <mat-option value="other">Other</mat-option>
+                </mat-select>
+              </mat-form-field>
+              </div>
+            } @else if(role == "DOCTOR" ) {
+              <div class ="row">
+                <mat-form-field appearance="outline" class="full-width">
+                  <mat-label>Phone Number</mat-label>
+                  <input matInput placeholder="Enter Phone Number" formControlName="phoneNumber" type="number" required>
+                </mat-form-field>
+                <mat-form-field appearance="outline" class="full-width">
+                  <mat-label>License Number</mat-label>
+                  <input matInput placeholder="Enter License Number" formControlName="licenseNumber" type="string" required>
+                </mat-form-field>
+                </div>
+              <div class="row">
+                <mat-form-field appearance="outline" class="full-width">
+                  <mat-label>Doctor Specialization</mat-label>
+                  <input matInput placeholder="Enter Specialization" formControlName="specialization" type="string" required>
+                </mat-form-field>
+                <mat-form-field appearance="outline" class="full-width">
+                  <mat-label>Doctor Qualification </mat-label>
+                  <input matInput placeholder="Enter Qualification" formControlName="qualification" type="string" required>
+                </mat-form-field>
+                <mat-form-field appearance="outline" class="full-width">
+                  <mat-label>Doctor Experience</mat-label>
+                  <input matInput placeholder="Enter Experience Number" formControlName="experience" type="number" required>
+                </mat-form-field>
+              </div>
+              <div class="row">
+                <mat-form-field appearance="outline" >
+                  <mat-label>Select Gender</mat-label>
+                  <mat-select [(value)]="selectedGender" formControlName="gender" required>
+                    <mat-option value="male">Male</mat-option>
+                    <mat-option value="female">Female</mat-option>
+                    <mat-option value="other">Other</mat-option>
+                  </mat-select>
+                </mat-form-field>
+                <mat-form-field appearance="outline" >
+                  <mat-label>Select Hospital</mat-label>
+                  <mat-select [(value)]="selectedHospital" formControlName="orgId" required>
+                    @for (item of listOfHospitals; track item.hospitalId) {
+                      <mat-option [value]="item.hospitalId"> {{item.hospitalName}} </mat-option>
+
+                    }
+                  </mat-select>
+                </mat-form-field>
+                <mat-form-field appearance="outline" >
+                  <mat-label>Select Department</mat-label>
+                  <mat-select [(value)]="selectedDepartment" formControlName="department" required>
+                   <mat-option value="Emergency Department"> Emergency Department </mat-option>
+                   <mat-option value="General Surgery"> General Surgery </mat-option>
+                   <mat-option value="Cardiology"> Cardiology </mat-option>
+                   <mat-option value="Neurology"> Neurology </mat-option>
+                   <mat-option value="Orthopaedics"> Orthopaedics </mat-option>
+                   <mat-option value="Oncology"> Oncology </mat-option>
+                   <mat-option value="Paediatrics"> Paediatrics </mat-option>
+                   <mat-option value="Gynaecology"> Gynaecology </mat-option>
+                   <mat-option value="Psychiatry"> Psychiatry </mat-option>
+                   <mat-option value="Urology"> Urology </mat-option>
+                   <mat-option value="Ophthalmology"> Ophthalmology </mat-option>
+                   <mat-option value="Haematology"> Haematology </mat-option>
+                   <mat-option value="Gastroenterology"> Gastroenterology </mat-option>
+                   <mat-option value="Geriatrics"> Geriatrics </mat-option>
+                   <mat-option value="Radiology"> Radiology </mat-option>                   
+                  </mat-select>
+                </mat-form-field>
+               </div>
+            }
+            @else if (role == "PHARMACIST") {
+              <div class ="row">
+                <mat-form-field appearance="outline" class="full-width">
+                  <mat-label>Phone Number</mat-label>
+                  <input matInput placeholder="Enter Phone Number" formControlName="phoneNumber" type="number" required>
+                </mat-form-field>
+                <mat-form-field appearance="outline" class="full-width">
+                  <mat-label>License Number</mat-label>
+                  <input matInput placeholder="Enter License Number" formControlName="licenseNumber" type="string" required>
+                </mat-form-field>
+                </div>
+              <div class="row">
+                <mat-form-field appearance="outline" class="full-width">
+                  <mat-label>Pharmacist Qualification </mat-label>
+                  <input matInput placeholder="Enter Qualification" formControlName="qualification" type="string" required>
+                </mat-form-field>
+                <mat-form-field appearance="outline" class="full-width">
+                  <mat-label>Pharmacist Experience</mat-label>
+                  <input matInput placeholder="Enter Experience Number" formControlName="experience" type="number" required>
+                </mat-form-field>
+              </div>
+              <div class="row">
+                <mat-form-field appearance="outline" >
+                  <mat-label>Select Gender</mat-label>
+                  <mat-select [(value)]="selectedGender" formControlName="gender" required>
+                    <mat-option value="male">Male</mat-option>
+                    <mat-option value="female">Female</mat-option>
+                    <mat-option value="other">Other</mat-option>
+                  </mat-select>
+                </mat-form-field>
+                <mat-form-field appearance="outline" >
+                  <mat-label>Select Pharmacy</mat-label>
+                  <mat-select [(value)]="selectedPharmacy" formControlName="orgId" required>
+                    @for (item of listOfpharmacies; track item.pharmacyId) {
+                      <mat-option [value]="item.pharmacyId"> {{item.pharmacyName}} </mat-option>
+                    }
+                  </mat-select>
+                </mat-form-field>
+              </div>
+            } @else if(role == "LAB_TECHNICIAN") {
+              <div class ="row">
+                <mat-form-field appearance="outline" class="full-width">
+                  <mat-label>Phone Number</mat-label>
+                  <input matInput placeholder="Enter Phone Number" formControlName="phoneNumber" type="number" required>
+                </mat-form-field>
+                <mat-form-field appearance="outline" class="full-width">
+                  <mat-label>License Number</mat-label>
+                  <input matInput placeholder="Enter License Number" formControlName="licenseNumber" type="string" required>
+                </mat-form-field>
+                </div>
+              <div class="row">
+                <mat-form-field appearance="outline" class="full-width">
+                  <mat-label>Pharmacist Qualification </mat-label>
+                  <input matInput placeholder="Enter Qualification" formControlName="qualification" type="string" required>
+                </mat-form-field>
+                <mat-form-field appearance="outline" class="full-width">
+                  <mat-label>Pharmacist Experience</mat-label>
+                  <input matInput placeholder="Enter Experience Number" formControlName="experience" type="number" required>
+                </mat-form-field>
+              </div>
+              <div class="row">
+                <mat-form-field appearance="outline" >
+                  <mat-label>Select Gender</mat-label>
+                  <mat-select [(value)]="selectedGender" formControlName="gender" required>
+                    <mat-option value="male">Male</mat-option>
+                    <mat-option value="female">Female</mat-option>
+                    <mat-option value="other">Other</mat-option>
+                  </mat-select>
+                </mat-form-field>
+                <mat-form-field appearance="outline" >
+                  <mat-label>Select Lab</mat-label>
+                  <mat-select [(value)]="selectedLab" formControlName="orgId" required>
+                    @for (item of listOfLabs; track item.labId) {
+                      <mat-option [value]="item.labId"> {{item.labName}} </mat-option>
+                    }
+                  </mat-select>
+                </mat-form-field>
+              </div>
+            }
+             @else if (role == "ADMIN") {
+              <div class="row">	
+              <mat-form-field appearance="outline" class="full-width">
+                <mat-label>Status</mat-label>
+                <input matInput placeholder="Enter Status" formControlName="status" required>
+              </mat-form-field>
+              <mat-form-field appearance="outline" class="full-width">
+                <mat-label>Established Date</mat-label>
+                <input matInput [matDatepicker]="picker" formControlName="establishedDate" required>
+                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+              </mat-form-field>
+            </div>
+            <div class="row">
+            <mat-form-field appearance="outline" class="full-width">
+              <mat-label>Registration Number</mat-label>
+              <input matInput placeholder="Enter Registration Number" formControlName="registrationNumber" type="number" required>
+            </mat-form-field>
+            <mat-form-field appearance="outline" class="full-width">
+              <mat-label>License Number</mat-label>
+              <input matInput placeholder="Enter License Number" formControlName="licenseNumber" type="string" required>
+            </mat-form-field>
+            </div>
+            <div class="row">
+            <mat-form-field appearance="outline" class="full-width">
+              <mat-label>Phone Number</mat-label>
+              <input matInput placeholder="Enter Phone Number" formControlName="phoneNumber" type="number" required>
+            </mat-form-field>
+            <mat-form-field appearance="outline" class="full-width">
+              <mat-label>Description</mat-label>
+              <input matInput placeholder="Enter Description" formControlName="description" required>
+            </mat-form-field>
+            </div>
+          }
+            <div>
+              <button mat-raised-button color="primary" matStepperNext >Next</button>
+            </div>
+          </form>
+        </mat-step>
+      
+        <!-- Second Step -->
+        <mat-step [stepControl]="secondFormGroup">
+          <form [formGroup]="secondFormGroup">
+            <ng-template matStepLabel>Fill Out Your Address</ng-template>
+            <mat-form-field appearance="outline" class="full-width">
+              <mat-label>Address Line 1</mat-label>
+              <input matInput placeholder="Enter Address Line 1" formControlName="addressLine1" required>
+            </mat-form-field>
+            <mat-form-field appearance="outline" class="full-width">
+              <mat-label>City</mat-label>
+              <input matInput placeholder="Enter City" formControlName="city" required>
+            </mat-form-field>
+            <mat-form-field appearance="outline" class="full-width">
+              <mat-label>State</mat-label>
+              <input matInput placeholder="Enter State" formControlName="state" required>
+            </mat-form-field>
+            <mat-form-field appearance="outline" class="full-width">
+              <mat-label>Country</mat-label>
+              <input matInput placeholder="Enter Country" formControlName="country" required>
+            </mat-form-field>
+            <mat-form-field appearance="outline" class="full-width">
+              <mat-label>Zip Code</mat-label>
+              <input matInput placeholder="Enter Zip Code" formControlName="zipCode" required>
+            </mat-form-field>
+            <div class="row">
+              <button mat-raised-button color="primary" matStepperPrevious  >Back</button>
+              <button mat-raised-button color="primary"  matStepperNext>Next</button>
+            </div>
+          </form>
+        </mat-step>
+      
+        <!-- Third Step -->
+        <mat-step>
+          <ng-template matStepLabel>Review Your Information</ng-template>
+          <h3>Details</h3>
+          <p><strong>Name:</strong> {{ firstFormGroup.get('name')?.value }}</p>
+          <p><strong>Email:</strong> {{ firstFormGroup.get('email')?.value }}</p>
+          <p><strong>Phone Number:</strong> {{ firstFormGroup.get('phoneNumber')?.value }}</p>
+          @if (role == "PATIENT") {
+          <p><strong>Date of Birth:</strong> {{ firstFormGroup.get('dob')?.value }}</p>
+          <p><strong>Gender:</strong> {{ firstFormGroup.get('gender')?.value }}</p>
+          }
+          @else if (role == "DOCTOR") {
+          <p><strong>Qualification:</strong> {{ firstFormGroup.get('qualification')?.value }}</p>
+          <p><strong>Specialization:</strong> {{ firstFormGroup.get('specialization')?.value }}</p>
+          <p><strong>Experience:</strong> {{ firstFormGroup.get('experience')?.value }}</p>
+          <p><strong>Department:</strong> {{ firstFormGroup.get('department')?.value }}</p>
+          <p><strong>Hospital:</strong> {{ firstFormGroup.get('orgId')?.value }}</p>
+          <p><strong>Gender:</strong> {{ firstFormGroup.get('gender')?.value }}</p>
+          }
+          @else if (role == "PHARMACIST" || role == "LAB_TECHNICIAN") {
+          <p><strong>Qualification:</strong> {{ firstFormGroup.get('qualification')?.value }}</p>
+          <p><strong>Experience:</strong> {{ firstFormGroup.get('experience')?.value }}</p>
+          <p><strong>License Number:</strong> {{ firstFormGroup.get('licenseNumber')?.value }}</p>
+          <!-- <p><strong>Pharmacy :</strong> {{ firstFormGroup.get('orgId')?.value }}</p> -->
+          <p><strong>Gender:</strong> {{ firstFormGroup.get('gender')?.value }}</p>
+          }
+          @else if (role == "ADMIN") {
+          <p><strong>Description:</strong> {{ firstFormGroup.get('description')?.value }}</p>
+          <p><strong>Status:</strong> {{ firstFormGroup.get('status')?.value }}</p>
+          <p><strong>Established Date:</strong> {{ firstFormGroup.get('establishedDate')?.value }}</p>
+          <p><strong>Registration Number:</strong> {{ firstFormGroup.get('registrationNumber')?.value }}</p>
+          <p><strong>License Number:</strong> {{ firstFormGroup.get('licenseNumber')?.value }}</p>
+          }
+          <h3>Address</h3>
+          <p><strong>Address Line 1:</strong> {{ secondFormGroup.get('addressLine1')?.value }}</p>
+          <p><strong>City:</strong> {{ secondFormGroup.get('city')?.value }}</p>
+          <p><strong>State:</strong> {{ secondFormGroup.get('state')?.value }}</p>
+          <p><strong>Country:</strong> {{ secondFormGroup.get('country')?.value }}</p>
+          <p><strong>Zip Code:</strong> {{ secondFormGroup.get('zipCode')?.value }}</p>
+          <div class="row">
+            <button mat-raised-button color="primary"  matStepperPrevious>Back</button>
+            @if(isUpdate){
+              <button mat-raised-button color="primary" (click)="submit()">Update</button>
+            }@else{
+              <button mat-raised-button color="primary" color="primary" (click)="submit()">Submit</button>
+            }
+          </div>
+        </mat-step>
+      </mat-stepper>
+    </mat-card-content>
+  </mat-card>
+  <!-- <app-footer></app-footer> -->

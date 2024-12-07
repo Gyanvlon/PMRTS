@@ -1,0 +1,19 @@
+<mat-toolbar color="primary">
+      <button mat-icon-button>
+        <mat-icon>menu</mat-icon>
+      </button>
+      <img src="MRTS.png" alt="Personal Medical Records Tracking System" class="logo">
+      <span class="title">Personal Medical Record Tracking System</span>
+      <span class="spacer"></span>
+      <button mat-icon-button>
+        <mat-icon>notifications</mat-icon>
+      </button>
+      <button mat-icon-button [matMenuTriggerFor]="userMenu">
+        <mat-icon>account_circle</mat-icon>
+      </button>   
+      <mat-menu #userMenu="matMenu">
+        <button mat-menu-item>Profile</button>
+        <button mat-menu-item>Settings</button>
+        <button mat-menu-item>Logout</button>
+      </mat-menu>
+  </mat-toolbar>

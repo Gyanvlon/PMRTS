@@ -1,0 +1,61 @@
+<div class="dashboard-container">
+    <mat-card class="dashboard-card">
+      <mat-card-header>
+        <mat-card-title>Dashboard</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <div class="row">
+          <a mat-list-item [routerLink]="['/home/hospitals']" class="stat-item">
+            <mat-icon matListItemIcon>local_hospital</mat-icon>
+            <span matListItemTitle>Hospitals</span>
+            <span>{{count.numberOfHospitals}}</span>
+          </a>
+          <a mat-list-item [routerLink]="['/home/pharmacies']" class="stat-item">
+            <mat-icon matListItemIcon>local_pharmacy</mat-icon>
+            <span matListItemTitle>Pharmacies</span>
+            <span>{{count.numberOfPharmacies}}</span>
+          </a>
+          <a mat-list-item [routerLink]="['/home/labs']" class="stat-item">
+            <mat-icon matListItemIcon>science</mat-icon>
+            <span matListItemTitle>Labs</span>
+            <span>{{count.numberOfLabs}}</span>
+          </a>
+        </div>
+        <div class="row">
+          <a mat-list-item [routerLink]="['/home/doctors']" class="stat-item">
+            <mat-icon matListItemIcon>medical_services</mat-icon>
+            <span matListItemTitle>Doctor</span>
+            <span>{{count.numberOfDoctors}}</span>
+          </a>
+          <a mat-list-item [routerLink]="['/home/pharmacists']" class="stat-item">
+            <mat-icon matListItemIcon>healing</mat-icon>
+            <span matListItemTitle>Pharmacist</span>
+            <span>{{count.numberOfPharmacists}}</span>
+          </a>
+            <a mat-list-item [routerLink]="['/home/labtechnicians']" class="stat-item">
+                <mat-icon matListItemIcon>engineering</mat-icon>
+                <span matListItemTitle>Lab Technician</span>
+                <span>{{count.numberofLabTechnicians}}</span>
+         </a>
+        </div>
+        <div class="row"> 
+          <a mat-list-item [routerLink]="['/home/patients']" class="stat-item">
+            <mat-icon matListItemIcon>person</mat-icon>
+            <span matListItemTitle>Patient</span>
+            <span>{{count.numberOfPatients}}</span>
+          </a>
+          <a mat-list-item [routerLink]="['/home/reports']" class="stat-item">
+            <mat-icon matListItemIcon>report</mat-icon>
+            <span matListItemTitle>Medical Report</span>
+            <span>{{count.numberOfReports}}</span>
+          </a>
+          <a mat-list-item [routerLink]="['/home/prescriptions']" class="stat-item">
+            <mat-icon matListItemIcon>description</mat-icon>
+            <span matListItemTitle>Prescriptions</span>
+            <span>{{count.numberOfPrescriptions}}</span>
+          </a>
+        </div>
+      </mat-card-content>
+    </mat-card>
+  </div>
+  
